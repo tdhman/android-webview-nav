@@ -16,10 +16,10 @@
 
 <script>
     import Test from './Test';
-    import * as application from 'tns-core-modules/application';
-    import * as applicationUtils from 'tns-core-modules/utils/utils';
-    import { isAndroid, isIOS } from 'tns-core-modules/platform';
-    const BarcodeScanner = require("nativescript-barcodescanner").BarcodeScanner;
+    import * as application from '@nativescript/core/application';
+    import * as applicationUtils from '@nativescript/core/utils/utils';
+    import { isAndroid, isIOS } from '@nativescript/core/platform';
+    // const BarcodeScanner = require("nativescript-barcodescanner").BarcodeScanner;
 
     function timeout(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -121,37 +121,37 @@
                 }
             },
             scanQRCode() {
-                this.authenticating = true;
-                let barcodescanner = new BarcodeScanner();
-                barcodescanner.scan({
-                    formats: "QR_CODE",   // Pass in of you want to restrict scanning to certain types
-                    cancelLabel: "Done", // iOS only, default 'Close'
-                    cancelLabelBackgroundColor: "#00559A", // iOS only, default '#000000' (black)
-                    message: "Use the volume buttons for extra light", // Android only, default is 'Place a barcode inside the viewfinder rectangle to scan it.'
-                    showTorchButton: true,        // default false
-                    closeCallback: function () { console.log("Scanner closed"); }, // invoked when the scanner was closed (success or abort)
-                    resultDisplayDuration: 500,   // Android only, default 1500 (ms), set to 0 to disable echoing the scanned text
-                    orientation: "portrait",     // Android only, optionally lock the orientation to either "portrait" or "landscape"
-                    openSettingsIfPermissionWasPreviouslyDenied: true // On iOS you can send the user to the settings app if access was previously denied
-                }).then(
-                    (result) => {
-                        // parse QR code
-                        console.log(result);
-                        timeout(3000).then(() => {
-                            this.authenticating = false;
-                            this.$navigateTo(Test, {
-                                // clearHistory: true,
-                                props: {
-                                    any: {}
-                                }
-                            });
-                        });
-                    },
-                    (error) => {
-                        console.log("No scan: " + error);
-                        this.authenticating = false;
-                    }
-                );
+                // this.authenticating = true;
+                // let barcodescanner = new BarcodeScanner();
+                // barcodescanner.scan({
+                //     formats: "QR_CODE",   // Pass in of you want to restrict scanning to certain types
+                //     cancelLabel: "Done", // iOS only, default 'Close'
+                //     cancelLabelBackgroundColor: "#00559A", // iOS only, default '#000000' (black)
+                //     message: "Use the volume buttons for extra light", // Android only, default is 'Place a barcode inside the viewfinder rectangle to scan it.'
+                //     showTorchButton: true,        // default false
+                //     closeCallback: function () { console.log("Scanner closed"); }, // invoked when the scanner was closed (success or abort)
+                //     resultDisplayDuration: 500,   // Android only, default 1500 (ms), set to 0 to disable echoing the scanned text
+                //     orientation: "portrait",     // Android only, optionally lock the orientation to either "portrait" or "landscape"
+                //     openSettingsIfPermissionWasPreviouslyDenied: true // On iOS you can send the user to the settings app if access was previously denied
+                // }).then(
+                //     (result) => {
+                //         // parse QR code
+                //         console.log(result);
+                //         timeout(3000).then(() => {
+                //             this.authenticating = false;
+                //             this.$navigateTo(Test, {
+                //                 // clearHistory: true,
+                //                 props: {
+                //                     any: {}
+                //                 }
+                //             });
+                //         });
+                //     },
+                //     (error) => {
+                //         console.log("No scan: " + error);
+                //         this.authenticating = false;
+                //     }
+                // );
             },
             navigate() {
                 console.log("navigating.....");

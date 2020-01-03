@@ -1,6 +1,6 @@
 import Vue from "nativescript-vue";
-import * as application from 'tns-core-modules/application';
-import {isAndroid} from 'tns-core-modules/platform';
+import * as application from '@nativescript/core/application';
+import {isAndroid} from '@nativescript/core/platform';
 
 import Home from "./components/Home";
 
